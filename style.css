@@ -1,0 +1,319 @@
+:root {
+    --primary-color: #1e1e2e;
+    --secondary-color: #2d2d44;
+    --accent-color: #c8aa6e;
+    --text-color: #f0e6d2;
+    --card-bg: #2d2d44;
+    --border-radius: 8px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: var(--spacing-md);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+h1 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.description {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #a09b8c;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.section {
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(240, 230, 210, 0.2);
+}
+
+.team-members {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.member-input {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.member-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #d1b87a;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button-full {
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+.button-secondary {
+    background-color: #4a4a6a;
+}
+
+.button-secondary:hover {
+    background-color: #5a5a7a;
+}
+
+.team-assignment {
+    margin-top: var(--spacing-md);
+}
+
+.team-member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-sm);
+    border-left: 4px solid transparent;
+}
+
+.team-member.current-turn {
+    border-left-color: var(--accent-color);
+    background-color: rgba(200, 170, 110, 0.1);
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.member-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.member-role {
+    font-size: 0.9em;
+    color: #a09b8c;
+    margin-top: 2px;
+}
+
+.assigned-champion {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 0 var(--spacing-sm);
+}
+
+.member-order {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: var(--spacing-sm);
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: var(--spacing-md);
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.loading {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.spinner {
+    border: 4px solid rgba(240, 230, 210, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid var(--accent-color);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--spacing-md);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--secondary-color);
+    margin: auto;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.close {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: var(--spacing-md);
+    top: var(--spacing-sm);
+}
+
+.close:hover {
+    color: var(--accent-color);
+}
+
+.role-selection {
+    margin: var(--spacing-md) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.role-selection label {
+    font-weight: bold;
+}
+
+.role-selection select {
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+}
+
+.champions-display-modal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.champion-card-modal {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.champion-card-modal:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+}
+
+.champion-card-modal.selected {
+    border-color: var(--accent-color);
+    background-color: rgba(200, 170, 110, 0.2);
+}
+
+.champion-name-modal {
+    font-weight: bold;
+    margin-top: 5px;
+}
